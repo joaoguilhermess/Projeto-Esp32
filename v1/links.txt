@@ -1,0 +1,4 @@
+https://github.com/RuiSantosdotme/ESP32-CAM-Arduino-IDE
+https://randomnerdtutorials.com/esp32-cam-take-photo-display-web-server/
+https://randomnerdtutorials.com/esp32-cam-ov2640-camera-settings/
+https://randomnerdtutorials.com/esp32-cam-video-streaming-web-server-camera-home-assistant/

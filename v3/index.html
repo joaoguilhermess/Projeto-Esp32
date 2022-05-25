@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		@font-face {
+			font-family: "Whitney";
+			font-style: normal;
+			text-rendering: optimizeLegibility;
+			src: local("Whitney Medium"), url("whitneymedium") format("woff");
+		}
+		* {
+			box-sizing: border-box;
+			/*transition-duration: 0.25s;*/
+			user-select: none;
+			font-size: 14px;
+			font-family: Whitney;
+			outline: 0;
+		}
+		html, body {
+			font-size: 14px;
+			font-weight: 500;
+			color: #f0f0f0;
+			font-family: Whitney, Roboto;
+			min-height: 100vh;
+			min-width: 100vw;
+			max-height: 100vh;
+			max-width: 100vw;
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+			min-height: 100vh;
+			min-width: 100vw;
+			max-height: 100vh;
+			max-width: 100vw;
+			background: #282828;
+		}
+		::-webkit-scrollbar {
+			width: 0.5em;
+			height: 0.5em;
+			background: #181818;
+		}
+		::-webkit-scrollbar-thumb {
+			transition-duration: 0.5s;
+			background: #353535;
+		}
+		::-webkit-scrollbar-thumb:hover {
+			transition-duration: 0.5s;
+			background: #808080;
+		}
+		.main {
+			display: flex;
+			flex-direction: row;
+			min-height: 90vh;
+			min-width: 90vw;
+			max-width: 90vw;
+			max-height: 90vh;
+			padding: 0.5em;
+			box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+		}
+		.main .left {
+			display: flex;
+			flex-direction: column;
+			flex: 0.23;
+			padding: 0.5em;
+			background: #323232;
+			border-left-width: 2.5em;
+			border-left-color: #c04000;
+			border-left-style: solid;
+			padding: 0.5em;
+			box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+		}
+		.main .left .title {
+			display: flex;
+			padding: 0.5em;
+			background-color: #282828;
+			width: 100%;
+			justify-content: center;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+		}
+		.main .left .menus {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: 100%;
+			justify-content: center;
+			align-items: center;
+			overflow-y: auto;
+		}
+		.main .left .menus .item {
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			padding: 1.75em;
+			width: 75%;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+			background-color: #2b2b2b;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			color: #a0a0a0;
+		}
+		.main .left .menus .item.active {
+			background-color: #424242;
+			color: #f0f0f0;
+		}
+		.main .left .menus .item.block {
+			color: #707070;
+			cursor: not-allowed;
+		}
+		.main .left .menus .item:hover {
+			background: #353535;
+		}
+		.main .right {
+			display: flex;
+			flex: 0.77;
+			flex-direction: column;
+			align-items: center;
+			padding: 0.5em;
+		}
+		.main .right .sectionLogin {
+			display: flex;
+			min-width: 100%;
+			min-height: 100%;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		.main .right .sectionLogin .title {
+			display: flex;
+			flex-direction: column;
+			padding: 0.5em;
+			justify-content: center;
+			align-items: center;
+		}
+		.main .right .sectionLogin .login {
+			display: flex;
+			padding: 1.5em;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			width: 27em;
+			height: 25em;
+			background-color: #323232;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+		}
+		.main .right .sectionLogin .login .auth {
+			display: flex;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+			padding: 0.75em;
+			width: 90%;
+			border: 0;
+			color: #f0f0f0;
+			background-color: #282828;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+		}
+		.main .right .sectionLogin .login .submit {
+			display: flex;
+			padding: 0.5em;
+			padding-left: 1.25em;
+			padding-right: 1.25em;
+			margin-left: auto;
+			color: #d0d0d0;
+			border: 0;
+			background-color: #2b2b2b;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			transition-duration: 0.25s;
+		}
+		.main .right .sectionLogin .login .submit:hover {
+			color: #f0f0f0;
+			background-color: #353535;
+		}
+		.main .right .sectionLiveStream {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			flex-direction: column;
+			align-items: center;
+		}
+		.main .right .sectionLiveStream .live {
+			display: flex;
+			width: 100%;
+			padding: 0.5em;
+			justify-content: center;
+			max-height: 60%;
+			max-width: 100%;
+			height: 60%;
+		}
+		.main .right .sectionLiveStream .live .stream {
+			max-width: 100%;
+			max-height: 100%;
+			height: 100%;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+		}
+		.main .right .sectionLiveStream .middle {
+			display: flex;
+			flex-direction: row;
+			justify-content: center; 
+		}
+		.main .right .sectionLiveStream .middle .state {
+			visibility: hidden;
+			display: flex;
+			justify-content: center;
+			padding: 0.5em;
+			padding-left: 1em;
+			padding-right: 1em;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			margin-left: 0.25em;
+			margin-right: 0.25em;
+		}
+		.main .right .sectionLiveStream .middle .state.ready {
+			visibility: visible;
+			background-color: #209020;
+		}
+		.main .right .sectionLiveStream .middle .state.pause {
+			visibility: visible;
+			background-color: #909020;
+		}
+		.main .right .sectionLiveStream .middle .state.record {
+			visibility: visible;
+			background-color: #902020;
+		}
+		.main .right .sectionLiveStream .middle .start {
+			justify-content: center;
+			padding: 0.5em;
+			padding-left: 1em;
+			padding-right: 1em;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			background-color: #c04000;
+			margin-left: 0.25em;
+			margin-right: 0.25em;
+			cursor: pointer;
+		}
+		.main .right .sectionLiveStream .middle .pause {
+			justify-content: center;
+			padding: 0.5em;
+			padding-left: 1em;
+			padding-right: 1em;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			background-color: #c04000;
+			margin-left: 0.25em;
+			margin-right: 0.25em;
+			cursor: pointer;
+		}
+		.main .right .sectionLiveStream .middle .stop {
+			justify-content: center;
+			padding: 0.5em;
+			padding-left: 1em;
+			padding-right: 1em;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			background-color: #c04000;
+			margin-left: 0.25em;
+			margin-right: 0.25em;
+			cursor: pointer;
+		}
+		.main .right .sectionLiveStream .options {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 100%;
+			height: 100%;
+			padding: 0.5em;
+			padding-left: 2.5em;
+			padding-right: 2.5em;
+			flex: 1;
+			justify-content: center;
+			overflow-y: scroll;
+		}
+		.main .right .sectionLiveStream .options .item {
+			padding: 1em;
+			width: 250px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 0.25em;
+			flex-direction: row;
+			background-color: #2b2b2b;
+			box-shadow: 0 10px 10px rgba(0, 0, 0, 0.22);
+		}
+		.main .right .sectionLiveStream .options .item .name {
+		}
+		.main .right .sectionLiveStream .options .item .switch {
+			display: flex;
+			margin-left: auto;
+			background-color: #323232;
+			border-radius: 15px;
+			-webkit-appearance: none;
+			width: 3.5em;
+			height: 2em;
+			cursor: pointer;
+			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.22);
+		}
+		.main .right .sectionLiveStream .options .item .switch::-webkit-slider-runnable-track {
+			display: flex;
+			-webkit-appearance: none;
+			border-radius: 50%;
+			border-width: 2px;
+		}
+		.main .right .sectionLiveStream .options .item .switch::-webkit-slider-thumb {
+			display: flex;
+			-webkit-appearance: none;
+			height: 1.5em;
+			width: 1.5em;
+			border-radius: 50%;
+			border-color: #101010;
+			border-style: solid;
+			border-width: 0.5px;
+			background-color: #3f3f3f;
+			cursor: grab;
+		}
+		.main .right .sectionLiveStream .options .item .value {
+			display: flex;
+			justify-content: center;
+			font-family: monospace;
+			padding: 0;
+			width: 2.5em;
+		}
+		.main .right .sectionVideos {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			flex-direction: column;
+			align-items: center;
+		}
+		.main .right .sectionVideos .view {
+			display: flex;
+			margin: 0.5em;
+			justify-content: center;
+			box-shadow: 0 5px 10px rgba(0, 0, 0, 0.22);
+			max-height: 60%;
+			max-width: 100%;
+			height: 60%;
+		}
+		.main .right .sectionVideos .videosContainer {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			height: 40%;
+			overflow-y: auto;
+			padding: 0.5em;
+			padding-left: 3em;
+			padding-right: 3em;
+		}
+		.main .right .sectionVideos .videosContainer .message {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			justify-content: center;
+			align-items: center;
+		}
+		.main .right .sectionVideos .video {
+			margin-bottom: 0.5em;
+			display: flex;
+			width: 100%;
+			justify-content: flex-end;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			background-color: #2b2b2b;
+		}
+		.main .right .sectionVideos .video .thumb {
+			display: flex;
+			padding: 0.5em;
+			width: 5em;
+			max-height: 5em;
+			justify-content: center;
+			align-items: center;
+		}
+		.main .right .sectionVideos .video .thumb .image {
+			display: flex;
+			/*justify-content: center;*/
+			/*align-items: center;*/
+			max-height: 100%;
+			max-width: 100%;
+		}
+		.main .right .sectionVideos .video .filename {
+			display: flex;
+			padding: 0.5em;
+			text-overflow: ellipsis;
+		}
+		.main .right .sectionVideos .video .creation {
+			margin-left: auto;
+			display: flex;
+			padding: 0.5em;
+		}
+		.main .right .sectionVideos .video .duration {
+			display: flex;
+			padding: 0.5em;
+		}
+		.main .right .sectionVideos .video .play {
+			display: flex;
+			padding: 0.5em;
+			padding-left: 1.25em;
+			padding-right: 1.25em;
+			color: #d0d0d0;
+			align-items: center;
+			cursor: pointer;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			transition-duration: 0.25s;
+		}
+		.main .right .sectionVideos .video .play:hover {
+			color: #f0f0f0;
+			background-color: #353535;
+		}
+		.main .right .sectionVideos .video {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+		}
+		.main .right .sectionConfiguration {
+			display: flex;
+			width: 100%;
+			height: 100%;
+			flex-direction: column;
+			align-items: center;
+			padding-left: 1.25em;
+			padding-right: 1.25em;
+		}
+		.main .right .sectionConfiguration .auth {
+			display: flex;
+			width: 100%;
+			padding: 0.5em;
+			flex-direction: column;
+			margin-bottom: 2em;
+		}
+		.main .right .sectionConfiguration .auth .top {
+			display: flex;
+			width: 100%;
+			padding: 0.5em;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			background-color: #2c2c2c;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.main .right .sectionConfiguration .auth .top .title {
+			display: flex;
+			width: 100%;
+			padding: 1em;
+		}
+		.main .right .sectionConfiguration .auth .top .generate {
+			display: flex;
+			padding: 1em;
+			padding-left: 1.25em;
+			padding-right: 1.25em;
+			color: #d0d0d0;
+			cursor: pointer;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			transition-duration: 0.25s;
+		}
+		.main .right .sectionConfiguration .auth .top .generate:hover {
+			color: #f0f0f0;
+			background-color: #353535;
+		}
+		.main .right .sectionConfiguration .auth .list {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			overflow-y: auto;
+		}
+		.main .right .sectionConfiguration .auth .list .item {
+			display: flex;
+			width: 100%;
+			padding: 0.5em;
+			justify-content: space-between;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			background-color: #202020;
+			margin-top: 0.25em;
+			margin-bottom: 0.25em;
+			padding-left: 2em;
+			padding-right: 2em;
+			transition-duration: 0.25s;
+		}
+		.main .right .sectionConfiguration .auth .list .item:hover {
+			background-color: #252525;
+		}
+		.main .right .sectionConfiguration .auth .list .item .name {
+		}
+		.main .right .sectionConfiguration .auth .list .item .key {
+		}
+		.main .right .sectionConfiguration .blacklist {
+			display: flex;
+			flex: 1;
+			width: 100%;
+			overflow-y: hidden;
+		}
+		.main .right .sectionConfiguration .blacklist .warn {
+			height: 100%;
+			display: flex;
+			width: 50%;
+			padding: 0.5em;
+			flex-direction: column;
+		}
+		.main .right .sectionConfiguration .blacklist .warn .title {
+			display: flex;
+			width: 100%;
+			padding: 1.5em;
+			background-color: #2c2c2c;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+		}
+		.main .right .sectionConfiguration .blacklist .warn .list {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			overflow-y: auto;
+		}
+		.main .right .sectionConfiguration .blacklist .warn .list .item {
+			display: flex;
+			width: 100%;
+			padding: 0.5em;
+			background-color: #202020;
+			margin-top: 0.25em;
+			margin-bottom: 0.25em;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			transition-duration: 0.25s;
+		}
+		.main .right .sectionConfiguration .blacklist .warn .list .item:hover {
+			background-color: #252525;
+		}
+		.main .right .sectionConfiguration .blacklist .warn .list .ip {
+			display: flex;
+			margin-right: auto;
+			padding: 0.5em;
+		}
+		.main .right .sectionConfiguration .blacklist .warn .list .warns {
+			margin-right: 2em;
+			display: flex;
+			padding: 0.5em;
+		}
+		.main .right .sectionConfiguration .blacklist .warn .list .remove {
+			padding: 0.5em;
+			padding-left: 0.75em;
+			padding-right: 0.75em;
+			display: flex;
+			background-color: #802020;
+			cursor: pointer;
+		}
+		.main .right .sectionConfiguration .blacklist .warn .list .remove:hover {
+			background-color: #902020;
+		}
+		.main .right .sectionConfiguration .blacklist .ban {
+			height: 100%;
+			display: flex;
+			width: 50%;
+			padding: 0.5em;
+			flex-direction: column;
+		}
+		.main .right .sectionConfiguration .blacklist .warn .list {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			overflow-y: auto;
+		}
+		.main .right .sectionConfiguration .blacklist .ban .title {
+			display: flex;
+			width: 100%;
+			padding: 1.5em;
+			background-color: #2c2c2c;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+		}
+		.main .right .sectionConfiguration .blacklist .ban .list {
+			height: 100%;
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			overflow-y: auto;
+		}
+		.main .right .sectionConfiguration .blacklist .ban .list .item {
+			display: flex;
+			width: 100%;
+			background-color: #202020;
+			padding: 0.5em;
+			margin-top: 0.25em;
+			margin-bottom: 0.25em;
+			box-shadow: 0 10px 10px rgba(0,0,0,0.22);
+			transition-duration: 0.25s;
+		}
+		.main .right .sectionConfiguration .blacklist .ban .list .item:hover {
+			background-color: #252525;
+		}
+		.main .right .sectionConfiguration .blacklist .ban .list .ip {
+			display: flex;
+			margin-right: auto;
+			padding: 0.5em;
+		}
+		.main .right .sectionConfiguration .blacklist .ban .list .remove {
+			padding: 0.5em;
+			padding-left: 0.75em;
+			padding-right: 0.75em;
+			display: flex;
+			background-color: #802020;
+			cursor: pointer;
+			transition-duration: 0.25s
+		}
+		.main .right .sectionConfiguration .blacklist .ban .list .remove:hover {
+			background-color: #902020;
+		}
+		.hide {
+			visibility: hidden;
+			display: none !important; 
+		}
+		@keyframes toastFadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+		@keyframes toastFadeOut {
+			from {
+				opacity: 1;
+			}
+			to {
+				opacity: 0;
+			}
+		}
+		.toast {
+			position: fixed;
+			top: 1em;
+			display: flex;
+			justify-content: center;
+			/*height: 3em;*/
+			/*padding: 0.5em;*/
+			box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+			animation-duration: 0.25s;
+			animation-name: toastFadeIn;	
+		}
+		.toast .status {
+			display: flex;
+			justify-content: center;
+			padding: 0.5em;
+			padding-left: 1em;
+			padding-right: 1em;
+		}
+		.toast .success {
+			background-color: #209020;
+		}
+		.toast .fail {
+			background-color: #902020;
+		}
+		.toast .text {
+			display: flex;
+			color: #e0e0e0;
+			background-color: #202020;
+			padding: 0.5em;
+		}
+	</style>
+	<title>Esp32-Cam</title>
+</head>
+<body>
+	<div class="main">
+		<div class="left">
+			<div class="title">Esp32-Cam Project</div>
+			<div class="menus">
+				<div id="MenuLogin" class="item block"> Login </div>
+				<div id="MenuLiveStream" class="item block"> Live Stream </div>
+				<div id="MenuVideos" class="item block"> Videos </div>
+				<div id="MenuConfiguration" class="item block"> Configuration </div>
+			</div>
+		</div>
+		<div class="right">
+			<section class="sectionLogin hide">
+				<div class="title">Welcome</div>
+				<form class="login">
+					<input class="auth" placeholder="Client Authorization">
+					<button class="submit">Login</button>
+				</form>
+			</section>
+			<section class="sectionLiveStream hide">
+				<div class="live">
+					<img class="stream">
+				</div>
+				<div class="middle">
+					<div class="state"></div>
+					<div class="start hide">Start</div>
+					<div class="pause hide">Pause</div>
+					<div class="stop hide">Stop</div>
+				</div>
+				<div class="options">
+					<div class="item">
+						<div class="name">Brightness</div>
+						<input class="switch" type="range" value="0" min="-2" max="2">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Contrast</div>
+						<input class="switch" type="range" value="0" min="-2" max="2">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Saturation</div>
+						<input class="switch" type="range" value="0" min="-2" max="2">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Special Effect</div>
+						<input class="switch" type="range" value="0" min="0" max="6">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Whitebal</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Awb Gain</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Wb Mode</div>
+						<input class="switch" type="range" value="0" min="0" max="4">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Exposure Control</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Aec2</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Ae Level</div>
+						<input class="switch" type="range" value="0" min="-2" max="2">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Aec Value</div>
+						<input class="switch" type="range" value="0" min="0" max="1200">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Gain Control</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Agc Gain</div>
+						<input class="switch" type="range" value="0" min="0" max="30">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Gainceiling</div>
+						<input class="switch" type="range" value="0" min="0" max="6">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Bpc</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Wpc</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Raw gma</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Lenc</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">XMirror</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">YMirror</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Dcw</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+					<div class="item">
+						<div class="name">Color bar</div>
+						<input class="switch" type="range" value="0" min="0" max="1">
+						<div class="value">0</div>
+					</div>
+				</div>
+			</section>
+			<section class="sectionVideos hide">
+				<video type="video/mp4" class="view" loop="true" controls="true" autoplay="true"></video>
+				<div class="videosContainer"></div>
+			</section>
+			<section class="sectionConfiguration hide">
+				<div class="auth">
+					<div class="top"><div class="title">Auth</div><div class="generate">Regenerate</div></div>
+					<div class="list"></div>
+				</div>
+				<div class="blacklist">
+					<div class="warn">
+						<div class="title">Warning</div>
+						<div class="list"></div>
+					</div>
+					<div class="ban">
+						<div class="title">Banned</div>
+						<div class="list"></div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<div class="toast hide">
+		<div class="status"></div>
+		<div class="text"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	const OptionsContainer = document.querySelector(".main .right .options");
+	const MenuLogin = document.querySelector(".main .left .menus #MenuLogin");
+	const MenuLiveStream = document.querySelector(".main .left .menus #MenuLiveStream");
+	const MenuVideos = document.querySelector(".main .left .menus #MenuVideos");
+	const MenuConfiguration = document.querySelector(".main .left .menus #MenuConfiguration");
+	const SectionLogin = document.querySelector(".main .right .sectionLogin");
+	const SectionLiveStream = document.querySelector(".main .right .sectionLiveStream");
+	const SectionVideos = document.querySelector(".main .right .sectionVideos");
+	const SectionConfiguration = document.querySelector(".main .right .sectionConfiguration");
+	const FormLogin = document.querySelector(".main .right .sectionLogin .login");
+	const FormLoginAuth = document.querySelector(".main .right .sectionLogin .login .auth");
+	const Message = document.querySelector(".toast");
+	const MessageStatus = document.querySelector(".toast .status");
+	const MessageText = document.querySelector(".toast .text");
+	const ImageLiveStream = document.querySelector(".main .right .sectionLiveStream .live .stream");
+	const VideosContainer = document.querySelector(".main .right .sectionVideos .videosContainer");
+	const ViewVideo = document.querySelector(".main .right .sectionVideos .view");
+	const LiveStreamState = document.querySelector(".main .right .sectionLiveStream .middle .state");
+	const AuthContainer = document.querySelector(".main .right .sectionConfiguration .auth .list");
+	const WarningContainer = document.querySelector(".main .right .sectionConfiguration .blacklist .warn .list");
+	const BannedContainer = document.querySelector(".main .right .sectionConfiguration .blacklist .ban .list");
+	const Regenerate = document.querySelector(".main .right .sectionConfiguration .auth .top .generate");
+	const LiveStreamStateStart = document.querySelector(".main .right .sectionLiveStream .middle .start");
+	const LiveStreamStatePause = document.querySelector(".main .right .sectionLiveStream .middle .pause");
+	const LiveStreamStateStop = document.querySelector(".main .right .sectionLiveStream .middle .stop");
+
+	var ToastList = [];
+	var ToastTimeout;
+	function toast(message, success, long) {
+		if (success) {
+			MessageStatus.textContent = "Success";
+			MessageStatus.classList.toggle("success", true);
+			MessageStatus.classList.toggle("fail", false);
+		} else {
+			MessageStatus.textContent = "Fail";
+			MessageStatus.classList.toggle("success", false);
+			MessageStatus.classList.toggle("fail", true);
+		}
+
+		MessageText.textContent = message;
+
+		var delay = 1250;
+
+		if (long) {
+			delay = 3000;
+		}
+
+		clearTimeout(ToastTimeout);
+		ToastTimeout = setTimeout(function() {
+			Message.style.animationName = "toastFadeOut";
+			Message.classList.toggle("hide", true);
+			MessageStatus.classList.toggle("hide", true);
+			MessageText.classList.toggle("hide", true);
+			MessageStatus.classList.toggle("success", false);
+			MessageStatus.classList.toggle("fail", false);
+		}, delay);
+
+		Message.classList.toggle("hide", false);
+		MessageStatus.classList.toggle("hide", false);
+		MessageText.classList.toggle("hide", false);
+	}
+</script>
+<script type="text/javascript">
+	for (var i = 0; i < OptionsContainer.children.length; i++) {
+		OptionsContainer.children[i].querySelector(".switch").oninput = function(event) {
+			if (event.target.parentElement.querySelector(".value").textContent != event.target.value) {
+				fetch("/camera", {method: "POST", headers: {"content-type": "application/json"}, body: JSON.stringify({
+					name: event.target.parentElement.querySelector(".name").textContent,
+					value: event.target.value
+				})});
+				event.target.parentElement.querySelector(".value").textContent = event.target.value;
+			}
+		}
+	}
+
+	MenuLogin.onclick = function(event) {
+		if (!event.target.classList.contains("block")) {
+			MenuLogin.classList.toggle("active", true);
+			MenuLiveStream.classList.toggle("active", false);
+			MenuVideos.classList.toggle("active", false);
+			MenuConfiguration.classList.toggle("active", false);
+
+			SectionLogin.classList.toggle("hide", false);
+			SectionLiveStream.classList.toggle("hide", true);
+			SectionVideos.classList.toggle("hide", true);	
+			SectionConfiguration.classList.toggle("hide", true);
+
+			ImageLiveStream.src = "";
+			ViewVideo.src = "";
+			clearInterval(MenuLiveStream.interval);
+		}
+	}
+	MenuLiveStream.onclick = async function(event) {
+		if (!event.target.classList.contains("block")) {
+			MenuLogin.classList.toggle("active", false);
+			MenuLiveStream.classList.toggle("active", true);
+			MenuVideos.classList.toggle("active", false);
+			MenuConfiguration.classList.toggle("active", false);
+
+			SectionLogin.classList.toggle("hide", true);
+			SectionLiveStream.classList.toggle("hide", false);
+			SectionVideos.classList.toggle("hide", true);
+			SectionConfiguration.classList.toggle("hide", true);
+
+			ImageLiveStream.src = "/live";
+			ImageLiveStream.full = false;
+			ImageLiveStream.onclick = function() {
+				if (!ImageLiveStream.full) {
+					ImageLiveStream.requestFullscreen();
+				} else {
+					document.exitFullscreen();
+				}
+				
+				ImageLiveStream.full = !ImageLiveStream.full;
+			}
+			LiveStreamStateStart.onclick = async function(event) {
+				var json = await (await fetch("/state", {
+					method: "POST",
+					headers: {"content-type": "application/json"}, 
+				body: JSON.stringify({state: "start"})})).json();
+				toast(json.message, json.success);
+				LiveStreamStateStart.classList.toggle("hide", true);
+				LiveStreamStatePause.classList.toggle("hide", false);
+				LiveStreamStateStop.classList.toggle("hide", false);
+			}
+			LiveStreamStatePause.onclick = async function(event) {
+				var json = await (await fetch("/state", {
+					method: "POST",
+					headers: {"content-type": "application/json"}, 
+				body: JSON.stringify({state: "pause"})})).json();
+				toast(json.message, json.success);
+				LiveStreamStateStart.classList.toggle("hide", false);
+				LiveStreamStatePause.classList.toggle("hide", true);
+				LiveStreamStateStop.classList.toggle("hide", false);
+			}
+			LiveStreamStateStop.onclick = async function(event) {
+				var json = await (await fetch("/state", {
+					method: "POST",
+					headers: {"content-type": "application/json"}, 
+				body: JSON.stringify({state: "stop"})})).json();
+				toast(json.message, json.success);
+				LiveStreamStateStart.classList.toggle("hide", false);
+				LiveStreamStatePause.classList.toggle("hide", true);
+				LiveStreamStateStop.classList.toggle("hide", true);
+			}
+			clearInterval(MenuLiveStream.interval);
+			async function tick() {
+				fetch("/state", {method: "GET"}).then(function(res) {res.text().then(function(state) {
+					switch (state) {
+						case "ready":
+							if (LiveStreamState.state != "ready") {
+								ImageLiveStream.src = "";
+								ImageLiveStream.src = "/live";
+							}
+							LiveStreamState.state = "ready";
+							LiveStreamState.classList.toggle("ready", true);
+							LiveStreamState.classList.toggle("pause", false);
+							LiveStreamState.classList.toggle("record", false);
+							LiveStreamState.textContent = "Ready";
+
+							LiveStreamStateStart.classList.toggle("hide", false);
+							LiveStreamStatePause.classList.toggle("hide", true);
+							LiveStreamStateStop.classList.toggle("hide", true);
+							break;
+						case "pause":
+							if (LiveStreamState.state != "pause") {
+								ImageLiveStream.src = "";
+								ImageLiveStream.src = "/live";
+							}
+							LiveStreamState.state = "pause";
+							LiveStreamState.classList.toggle("ready", false);
+							LiveStreamState.classList.toggle("pause", true);
+							LiveStreamState.classList.toggle("record", false);
+							LiveStreamState.textContent = "Paused";
+
+							LiveStreamStateStart.classList.toggle("hide", true);
+							LiveStreamStatePause.classList.toggle("hide", false);
+							LiveStreamStateStop.classList.toggle("hide", true);
+							break;
+						case "record":
+							if (LiveStreamState.state != "record") {
+								ImageLiveStream.src = "";
+								ImageLiveStream.src = "/live";
+							}
+							LiveStreamState.state = "record";
+							LiveStreamState.classList.toggle("ready", false);
+							LiveStreamState.classList.toggle("pause", false);
+							LiveStreamState.classList.toggle("record", true);
+							LiveStreamState.textContent = "Recording...";
+
+							LiveStreamStateStart.classList.toggle("hide", true);
+							LiveStreamStatePause.classList.toggle("hide", false);
+							LiveStreamStateStop.classList.toggle("hide", false);
+							break;
+					}
+				})});
+				var cameraConfig = await (await fetch("/camera", {method: "GET"})).json();
+				for (var i = 0; i < OptionsContainer.children.length; i++) {
+					OptionsContainer.children[i].querySelector(".switch").value = 
+						cameraConfig[OptionsContainer.children[i].querySelector(".name").textContent.split(" ").join("_")].value;
+					OptionsContainer.children[i].querySelector(".value").textContent = 
+						cameraConfig[OptionsContainer.children[i].querySelector(".name").textContent.split(" ").join("_")].value;
+				}
+			}
+
+			tick();
+			MenuLiveStream.interval = setInterval(tick, 5000);
+			if (Admin) {
+
+			}
+			ViewVideo.src = "";
+		}
+	}
+	MenuVideos.onclick = async function(event) {
+		if (!event.target.classList.contains("block")) {
+			MenuLogin.classList.toggle("active", false);
+			MenuLiveStream.classList.toggle("active", false);
+			MenuVideos.classList.toggle("active", true);
+			MenuConfiguration.classList.toggle("active", false);
+
+			SectionLogin.classList.toggle("hide", true);
+			SectionLiveStream.classList.toggle("hide", true);
+			SectionVideos.classList.toggle("hide", false);
+			SectionConfiguration.classList.toggle("hide", true);
+
+			ImageLiveStream.src = "";
+			clearInterval(MenuLiveStream.interval);
+
+			var videos = await (await fetch("/videos", {method: "GET"})).json();
+			VideosContainer.innerHTML = "";
+			if (videos.length > 0) {
+				for (var i = 0; i < videos.length; i++) {
+					var video = document.createElement("div");
+					var thumb = document.createElement("div");
+					var thumbImg = document.createElement("img");
+					var filename = document.createElement("div");
+					var creation = document.createElement("div");
+					var duration = document.createElement("div");
+					var play = document.createElement("div");
+
+					video.classList.add("video");
+					thumb.classList.add("thumb");
+					thumbImg.classList.add("image");
+					filename.classList.add("filename");
+					creation.classList.add("creation");
+					duration.classList.add("duration");
+					play.classList.add("play");
+
+					filename.textContent = videos[i].filename;
+					creation.textContent = videos[i].creation;
+					duration.textContent = videos[i].duration;
+					play.textContent = "Play";
+
+					thumbImg.src = videos[i].thumb;
+					play.link = videos[i].link;
+					play.onclick = function(event) {
+						ViewVideo.src = event.target.link;
+					}
+
+					thumb.append(thumbImg);
+					video.append(thumb);
+					video.append(filename);
+					video.append(creation);
+					video.append(duration);
+					video.append(play);
+
+					VideosContainer.append(video);
+				}
+			} else {
+				var text = document.createElement("div");
+				text.classList.add("message");
+
+				text.textContent = "No Saved Videos!";
+
+				VideosContainer.append(text);
+			}
+		}
+	}
+	MenuConfiguration.onclick = async function(event) {
+		if (!event.target.classList.contains("block")) {
+			MenuLogin.classList.toggle("active", false);
+			MenuLiveStream.classList.toggle("active", false);
+			MenuVideos.classList.toggle("active", false);
+			MenuConfiguration.classList.toggle("active", true);
+
+			SectionLogin.classList.toggle("hide", true);
+			SectionLiveStream.classList.toggle("hide", true);
+			SectionVideos.classList.toggle("hide", true);
+			SectionConfiguration.classList.toggle("hide", false);
+
+			ImageLiveStream.src = "";
+			ViewVideo.src = "";
+			clearInterval(MenuLiveStream.interval);
+
+			Regenerate.onclick = async function(event) {
+				var json = await (await fetch("/auth", {method: "POST"})).json();
+				toast(json.message, json.success);
+				navigator.clipboard.writeText(json.token);
+				document.cookie = "token=" + json.token;
+			}
+
+			var auth = await (await fetch("/auth", {method: "GET"})).json();
+			AuthContainer.innerHTML = "";
+			for (var i = 0; i < auth.length; i++) {
+				var item = document.createElement("div");
+				var name = document.createElement("div");
+				var key = document.createElement("div");
+
+				item.classList.add("item");
+				name.classList.add("name");
+				key.classList.add("key");
+
+				name.textContent = auth[i].name;
+				key.textContent = auth[i].key;
+
+				item.append(name);
+				item.append(key);
+
+				AuthContainer.append(item);
+			}
+
+			var blacklist = await (await fetch("/blacklist", {method: "GET"})).json();
+			WarningContainer.innerHTML = "";
+			BannedContainer.innerHTML = "";
+			for (var i = 0; i < blacklist.Warning.length; i++) {
+				var item = document.createElement("div");
+				var ip = document.createElement("div");
+				var warns = document.createElement("div");
+				var remove = document.createElement("div");
+
+				item.classList.add("item");
+				warns.classList.add("warns");
+				ip.classList.add("ip");
+				remove.classList.add("remove");
+
+				remove.ip = blacklist.Warning[i].ip;
+
+				remove.onclick = async function(event) {
+					var json = await (await fetch("/blacklist", {
+						method: "POST",
+						headers: {"content-type": "application/json"}, 
+						body: JSON.stringify({Unwarn: event.target.ip})})).json();
+					toast(json.message, json.success);
+				};
+
+				ip.textContent = blacklist.Warning[i].ip;
+				warns.textContent = blacklist.Warning[i].value;
+				remove.textContent = "REMOVE";
+
+				item.append(ip);
+				item.append(warns);
+				item.append(remove);
+
+				WarningContainer.append(item);
+			}
+			for (var i = 0; i < blacklist.Banned.length; i++) {
+				var item = document.createElement("div");
+				var ip = document.createElement("div");
+				var remove = document.createElement("div");
+
+				item.classList.add("item");
+				ip.classList.add("ip");
+				remove.classList.add("remove");
+
+				remove.ip = blacklist.Banned[i];
+
+				remove.onclick = async function(event) {
+					var a = await (await fetch("/blacklist", {
+						method: "POST",
+						headers: {"content-type": "application/json"}, 
+						body: JSON.stringify({Unban: event.target.ip})})).json();
+				};
+
+				ip.textContent = blacklist.Banned[i];
+				remove.textContent = "REMOVE";
+
+				item.append(ip);
+				item.append(remove);
+
+				BannedContainer.append(item);
+			}
+		}
+	}
+
+	var Admin = false;
+
+	FormLogin.onsubmit = function(event) {
+		event.preventDefault();
+
+		document.cookie = "token=" + FormLoginAuth.value;
+		fetch("/login", {method: "POST"}).then(function(res) {
+			res.json().then(function(json) {
+				toast(json.message, json.success);
+				setTimeout(function() {
+					if (json.success) {
+						MenuLogin.classList.toggle("block", true);
+						MenuLiveStream.classList.toggle("block", false);
+						MenuLiveStream.click();
+						MenuVideos.classList.toggle("block", false);
+						if (json.admin) {
+							Admin = true;
+							MenuConfiguration.classList.toggle("block", false);
+						}
+					} else {
+						MenuLogin.classList.toggle("block", false);
+						MenuLiveStream.classList.toggle("block", true);
+						MenuVideos.classList.toggle("block", true);
+						MenuConfiguration.classList.toggle("block", true);
+						MenuLogin.click();
+					}
+				}, 1500);
+			});
+		});
+	}
+
+	// FormLoginAuth.value == document.cookie.split(";")[0];
+	MenuLogin.classList.toggle("block", false);
+	MenuLogin.click();
+</script>
+</html>

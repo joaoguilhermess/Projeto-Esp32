@@ -1,0 +1,134 @@
+{
+	"Brightness": {
+		"index": 0,
+		"max": 2,
+		"min": -2,
+		"value": "0"
+	},
+	"Contrast": {
+		"index": 1,
+		"max": 2,
+		"min": -2,
+		"value": "0"
+	},
+	"Saturation": {
+		"index": 2,
+		"max": 2,
+		"min": -2,
+		"value": 0
+	},
+	"Special_Effect": {
+		"index": 3,
+		"max": 6,
+		"min": 0,
+		"value": "0"
+	},
+	"Whitebal": {
+		"index": 4,
+		"max": 1,
+		"min": 0,
+		"value": 0
+	},
+	"Awb_Gain": {
+		"index": 5,
+		"max": 1,
+		"min": 0,
+		"value": "0"
+	},
+	"Wb_Mode": {
+		"index": 6,
+		"max": 4,
+		"min": 0,
+		"value": "0"
+	},
+	"Exposure_Control": {
+		"index": 7,
+		"max": 1,
+		"min": 0,
+		"value": 0
+	},
+	"Aec2": {
+		"index": 8,
+		"max": 1,
+		"min": 0,
+		"value": 0
+	},
+	"Ae_Level": {
+		"index": 9,
+		"max": 2,
+		"min": -2,
+		"value": 0
+	},
+	"Aec_Value": {
+		"index": 10,
+		"max": 1200,
+		"min": 0,
+		"value": 0
+	},
+	"Gain_Control": {
+		"index": 11,
+		"max": 1,
+		"min": 0,
+		"value": 0
+	},
+	"Agc_Gain": {
+		"index": 12,
+		"max": 30,
+		"min": 0,
+		"value": 0
+	},
+	"Gainceiling": {
+		"index": 13,
+		"max": 6,
+		"min": 0,
+		"value": 0
+	},
+	"Bpc": {
+		"index": 14,
+		"max": 1,
+		"min": 0,
+		"value": 0
+	},
+	"Wpc": {
+		"index": 15,
+		"max": 1,
+		"min": 0,
+		"value": 0
+	},
+	"Raw_gma": {
+		"index": 16,
+		"max": 1,
+		"min": 0,
+		"value": 0
+	},
+	"Lenc": {
+		"index": 17,
+		"max": 1,
+		"min": 0,
+		"value": 0
+	},
+	"XMirror": {
+		"index": 18,
+		"max": 1,
+		"min": 0,
+		"value": 0
+	},
+	"YMirror": {
+		"index": 19,
+		"max": 1,
+		"min": 0,
+		"value": "0"
+	},
+	"Dcw": {
+		"index": 20,
+		"max": 1,
+		"min": 0,
+		"value": "0"
+	},
+	"Color_bar": {
+		"index": 21,
+		"max": 1,
+		"min": 0,
+		"value": "0"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "esp32-project",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"main": "main.js",
+	"scripts": {
+		"main": "node main.js"
+	},
+	"author": "Jotagê",
+	"license": "ISC",
+	"dependencies": {
+		"body-parser": "^1.20.0",
+		"express": "^4.17.3",
+		"node-fetch": "^3.2.3"
+	}
+}
